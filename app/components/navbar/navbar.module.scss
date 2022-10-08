@@ -1,0 +1,42 @@
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 40px;
+}
+
+.nav-link {
+  display: flex;
+  cursor: pointer;
+
+  &:hover {
+    a {
+      color: #33c0cb;
+    }
+
+    span {
+      background-color: #33c0cb;
+    }
+  }
+}
+
+.counter-wrapper {
+  position: relative;
+}
+
+.icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 10px;
+}
+
+.icon {
+  width: 22px;
+  height: 2px;
+  background-color: black;
+  margin-top: 5px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}

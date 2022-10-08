@@ -1,0 +1,40 @@
+.button-link-small {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 12px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  color: black;
+  cursor: pointer;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: #00000059 0 5px 15px;
+  background-color: #33c0cb;
+  transition: background-color 150ms ease-in-out;
+
+  &:hover {
+    color: #faf8f8;
+    background-color: #2d848b;
+  }
+}
+
+.button-link-large {
+  display: inline-block;
+  padding: 9px 18px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  color: black;
+  cursor: pointer;
+  position: relative;
+  border-radius: 10px;
+  background-color: #33c0cb;
+  box-shadow: #00000059 0 5px 15px;
+  transition: background-color 150ms ease-in-out;
+
+  &:hover {
+    color: #faf8f8;
+    background-color: #2d848b;
+  }
+}

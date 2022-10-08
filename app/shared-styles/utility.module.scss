@@ -1,0 +1,37 @@
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: 40px;
+}
+
+.cart-counter {
+  color: black;
+  background-color: #33c0cb;
+  border-radius: 50%;
+  min-width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  position: absolute;
+  top: -10px;
+  left: -17px;
+  border: 3px solid #0d0c0c;
+  z-index: 2;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
