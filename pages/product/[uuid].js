@@ -18,8 +18,9 @@ export async function getStaticPaths() {
   }))
 
   // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { paths, fallback: false }
+  // { fallback: blocking } will server-render pages
+  // on-demand if the path doesn't exist.
+  return { paths, fallback: 'blocking' }
 }
 
 // This function gets called at build time
@@ -27,12 +28,16 @@ export async function getStaticProps({ params }) {
   // Call API endpoint to get product
   const { product } = await fetchProductData(params.uuid)
 
-  // By returning { props: { products } }, the Blog component
-  // will receive `products` as a prop at build time
+  // By returning { props: { products } }, the Card
+  // will receive `product` as a prop at build time
   return {
     props: {
       product,
     },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 30 seconds
+    revalidate: 30, // In seconds
   }
 }
 

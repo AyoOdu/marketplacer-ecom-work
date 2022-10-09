@@ -10,12 +10,16 @@ export async function getStaticProps() {
   // Call API endpoint to get product
   const { products } = await fetchProductData()
 
-  // By returning { props: { products } }, the Blog component
+  // By returning { props: { products } }, the Cards component
   // will receive `products` as a prop at build time
   return {
     props: {
       products,
     },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 30 seconds
+    revalidate: 30, // In seconds
   }
 }
 
