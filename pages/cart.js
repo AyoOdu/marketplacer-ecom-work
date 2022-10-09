@@ -1,5 +1,5 @@
 import { useSwrFetcher } from '../app/hooks/hook-use-swr'
-import { api_url } from '../app/constants/constants-storage-key'
+import { api_url } from '../app/constants/constants-api-url'
 import { useCart } from '../app/store'
 import { getCurrencyString } from '../app/helpers/get-currency-string'
 import { getDiscountedTotalPrice } from '../app/helpers/get-discounted-total-price'
