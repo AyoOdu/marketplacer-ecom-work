@@ -12,7 +12,7 @@ const Footer = () => {
           </Link>
         </li>
         <li className={styles['link-wrapper']}>
-          <Link href="/">
+          <Link href="/cart">
             <a>Checkout</a>
           </Link>
         </li>

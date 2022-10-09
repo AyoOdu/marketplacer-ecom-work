@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Cards from '../app/components/cards/cards'
 import { fetchProductData } from '../app/api/fetch-product-data'
 

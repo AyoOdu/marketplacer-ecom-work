@@ -29,7 +29,7 @@ const Navbar = () => {
         </Link>
       </li>
       <li className={styles['counter-wrapper']}>
-        <ButtonLink size="large" to="/" linkContent="Checkout">
+        <ButtonLink size="large" to="/cart" linkContent="Checkout">
           <span className={utilityStyles['cart-counter']}>{state.length}</span>
         </ButtonLink>
       </li>

@@ -2,7 +2,6 @@ import types from './types'
 import { sessionStorageKey } from '../constants/constants-storage-key'
 
 export default function reducer(state, action) {
-  console.log(action)
   const { INIT_CART, TOGGLE_PRODUCT } = types
   const { type, payload } = action
   switch (type) {
