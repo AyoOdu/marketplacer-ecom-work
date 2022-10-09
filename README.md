@@ -45,7 +45,7 @@ yarn lint
 yarn style-lint
 ```
 
-## Features
+## Features and Design Decisions
 
 - Home Page: List all available products, i.e. [http://localhost:3000/](http://localhost:3000/)
   - Rendering Mode: The selected rendering mode for this page is Next's Incremental Static Regeneration (ISR). ISR ensures that the page is kept fresh every 30 seconds using [stale-while-revalidate](https://www.rfc-editor.org/rfc/rfc5861#section-3)
