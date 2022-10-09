@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import ButtonLink from '../button-link/button-link'
 import styles from './card.module.scss'
 import utilityStyles from '../../shared-styles/utility.module.scss'
-import { getCurrencyString } from '../../helpers/functions/get-currency-string'
+import { getCurrencyString } from '../../helpers/get-currency-string'
 import { useCart } from '../../store'
 import types from '../../store/types'
 
