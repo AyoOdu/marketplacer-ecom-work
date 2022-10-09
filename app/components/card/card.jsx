@@ -5,11 +5,17 @@ import ButtonLink from '../button-link/button-link'
 import styles from './card.module.scss'
 import utilityStyles from '../../shared-styles/utility.module.scss'
 import { getCurrencyString } from '../../helpers/functions/get-currency-string'
+import { useCart } from '../../store'
+import types from '../../store/types'
 
 const Card = ({ product }) => {
   const { pathname } = useRouter()
   const { uuid, name, price } = product
   const isProductPage = pathname.includes('product')
+  const { state, dispatch } = useCart()
+  const isProductInCart = state.includes(uuid)
+
+  const handleClick = () => dispatch({ type: types.TOGGLE_PRODUCT, payload: uuid })
 
   return (
     <div className={styles['card-wrapper']}>
@@ -33,8 +39,14 @@ const Card = ({ product }) => {
           )}
         </div>
         <div className={styles['card-button-wrapper']}>
-          <ButtonLink size="large" to="/" linkContent="Update Cart" isButton>
-            <span className={utilityStyles['cart-counter']}>{`+` || `-`}</span>
+          <ButtonLink size="large" to="/" linkContent="Update Cart" isButton onClick={handleClick}>
+            <span
+              className={`${utilityStyles['cart-counter']} ${
+                isProductInCart ? styles['cart-counter-product-in-cart'] : ''
+              }`}
+            >
+              {isProductInCart ? <span>&mdash;</span> : <span>+</span>}
+            </span>
           </ButtonLink>
         </div>
       </div>
