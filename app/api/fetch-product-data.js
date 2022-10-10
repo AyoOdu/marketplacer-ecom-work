@@ -8,7 +8,7 @@ export const fetchProductData = async (productId) => {
   const parsedProductData = JSON.parse(productsJsonData)
   // return single product data
   if (productId) {
-    const selectedProduct = parsedProductData.find(({ uuid }, index) => `${uuid}` === productId)
+    const selectedProduct = parsedProductData.find(({ uuid }) => `${uuid}` === productId)
     if (selectedProduct) return { product: selectedProduct }
     return { product: null }
   }
