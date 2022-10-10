@@ -1,18 +1,15 @@
-import { useEffect } from 'react'
 import Link from 'next/link'
 import ButtonLink from '../button-link/button-link'
 import styles from './navbar.module.scss'
 import utilityStyles from '../../shared-styles/utility.module.scss'
+import { useSyncState } from '../../hooks/hook-use-sync-state'
 import { useCart } from '../../store'
-import types from '../../store/types'
 
 const Navbar = () => {
-  const { state, dispatch } = useCart()
+  const { state } = useCart()
 
-  useEffect(() => {
-    dispatch({ type: types.INIT_CART })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // sync api, an local state on mount
+  useSyncState()
 
   return (
     <ul className={`${utilityStyles.container} ${styles['nav-wrapper']}`}>

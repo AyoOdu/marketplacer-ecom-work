@@ -1,5 +1,5 @@
 import { useSwrFetcher } from '../app/hooks/hook-use-swr'
-import { api_url } from '../app/constants/constants-api-url'
+import { all_products_url } from '../app/constants/constants-api-url'
 import { useCart } from '../app/store'
 import { getCurrencyString } from '../app/helpers/get-currency-string'
 import { getDiscountedTotalPrice } from '../app/helpers/get-discounted-total-price'
@@ -7,7 +7,7 @@ import { getDiscountedTotalPrice } from '../app/helpers/get-discounted-total-pri
 const Cart = () => {
   const { state } = useCart()
   const body = JSON.stringify({ uuid: state })
-  const { products, isError, isLoading } = useSwrFetcher([api_url, body])
+  const { validProducts, isError, isLoading } = useSwrFetcher([all_products_url, body])
 
   // Handle loading and error states
   const FallbackMessage = () => <h1>There are no items in cart</h1>
@@ -15,12 +15,12 @@ const Cart = () => {
   if (isLoading) return <h1>Loading...</h1>
 
   // get required discount and total price
-  const hasItemsInCart = Array.isArray(products) && products.length > 0
-  const { discountPrice, rules } = hasItemsInCart ? getDiscountedTotalPrice(products) : {}
+  const hasValidItemsInCart = Array.isArray(validProducts) && validProducts.length > 0
+  const { discountPrice, rules } = hasValidItemsInCart ? getDiscountedTotalPrice(validProducts) : {}
 
-  return hasItemsInCart ? (
+  return hasValidItemsInCart ? (
     <>
-      {products.map(({ uuid, name, price }, index) => (
+      {validProducts.map(({ uuid, name, price }, index) => (
         <div key={uuid}>
           {(name || price) && (
             <p>

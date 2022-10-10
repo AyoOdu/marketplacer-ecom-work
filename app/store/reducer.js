@@ -6,8 +6,8 @@ export default function reducer(state, action) {
   const { type, payload } = action
   switch (type) {
     case INIT_CART:
-      return JSON.parse(window.sessionStorage.getItem(sessionStorageKey)) || []
-    case TOGGLE_PRODUCT: {
+      return payload
+    case TOGGLE_PRODUCT:
       // update cart state
       let updatedState
       if (state.includes(payload)) updatedState = state.filter((uuid) => uuid !== payload)
@@ -15,7 +15,6 @@ export default function reducer(state, action) {
       // update session storage status
       window.sessionStorage.setItem(sessionStorageKey, JSON.stringify(updatedState))
       return updatedState
-    }
     default:
       return state
   }

@@ -26,9 +26,10 @@ const fetcher = (...args) => {
 
 export const useSwrFetcher = (params) => {
   const { data, error } = useSWR(params, fetcher)
-  const { products } = data || {}
+  const { validProducts, validProductsUuid } = data || {}
   return {
-    products,
+    validProducts,
+    validProductsUuid,
     isLoading: !error && !data,
     isError: error,
   }
