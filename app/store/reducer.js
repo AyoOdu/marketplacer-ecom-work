@@ -1,5 +1,5 @@
 import types from './types'
-import { sessionStorageKey } from '../constants/constants-storage-key'
+import { localStorageKey } from '../constants/constants-storage-key'
 
 export default function reducer(state, action) {
   const { INIT_CART, TOGGLE_PRODUCT } = types
@@ -12,8 +12,8 @@ export default function reducer(state, action) {
       let updatedState
       if (state.includes(payload)) updatedState = state.filter((uuid) => uuid !== payload)
       else updatedState = [...state, payload]
-      // update session storage status
-      window.sessionStorage.setItem(sessionStorageKey, JSON.stringify(updatedState))
+      // update local storage status
+      window.localStorage.setItem(localStorageKey, JSON.stringify(updatedState))
       return updatedState
     default:
       return state

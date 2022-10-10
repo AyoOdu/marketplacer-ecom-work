@@ -7,12 +7,9 @@ const Products = ({ product }) => {
   return <Card key={uuid} product={product} />
 }
 
-// This function gets called at build time
 export async function getStaticPaths() {
-  // Call API endpoint to get products
   const { products } = await fetchProductData()
 
-  // Get the paths we want to pre-render based on product
   const paths = products.map((product) => ({
     params: { uuid: `${product.uuid}` },
   }))
@@ -23,13 +20,9 @@ export async function getStaticPaths() {
   return { paths, fallback: 'blocking' }
 }
 
-// This function gets called at build time
 export async function getStaticProps({ params }) {
-  // Call API endpoint to get product
   const { product } = await fetchProductData(params.uuid)
 
-  // By returning { props: { products } }, the Card
-  // will receive `product` as a prop at build time
   return {
     props: {
       product,

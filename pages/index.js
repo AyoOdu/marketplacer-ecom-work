@@ -5,13 +5,9 @@ const Home = ({ products }) => {
   return <Cards products={products} />
 }
 
-// This function gets called at build time
 export async function getStaticProps() {
-  // Call API endpoint to get product
   const { products } = await fetchProductData()
 
-  // By returning { props: { products } }, the Cards component
-  // will receive `products` as a prop at build time
   return {
     props: {
       products,

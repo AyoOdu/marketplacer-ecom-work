@@ -1,1 +1,1 @@
-export const sessionStorageKey = 'marketplacer-demo-key'
+export const localStorageKey = 'marketplacer-demo-key'

@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import { all_products_url } from '../constants/constants-api-url'
-import { sessionStorageKey } from '../constants/constants-storage-key'
+import { localStorageKey } from '../constants/constants-storage-key'
 import { useCart } from '../store'
 import types from '../store/types'
 
+// Performs a sync operation with remote API to remove any stale product id from state, and localStorage
+// Note: sync operation with remote API is only done when cart is not empty.
 export const useSyncState = () => {
   const { dispatch } = useCart()
 
-  // Sync local and api product states on page, if the cart is not empty
   const syncProductStates = async (url, localState, signal) => {
     try {
       const body = JSON.stringify({ uuid: localState })
@@ -21,7 +22,7 @@ export const useSyncState = () => {
       })
       const { validProductsUuid } = await response.json()
       if (!signal.aborted) {
-        window.sessionStorage.setItem(sessionStorageKey, JSON.stringify(validProductsUuid))
+        window.localStorage.setItem(localStorageKey, JSON.stringify(validProductsUuid))
         dispatch({ type: types.INIT_CART, payload: validProductsUuid })
       }
     } catch (e) {
@@ -30,7 +31,7 @@ export const useSyncState = () => {
   }
 
   useEffect(() => {
-    const localState = JSON.parse(window.sessionStorage.getItem(sessionStorageKey))
+    const localState = JSON.parse(window.localStorage.getItem(localStorageKey))
     if (localState) {
       const abortController = new AbortController()
       syncProductStates(all_products_url, localState, abortController.signal)

@@ -8,7 +8,7 @@ import { useCart } from '../../store'
 const Navbar = () => {
   const { state } = useCart()
 
-  // sync api, an local state on mount
+  // Sync API, local state, and localStorage on mount only if cart is not empty
   useSyncState()
 
   return (

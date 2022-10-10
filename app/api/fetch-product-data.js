@@ -1,8 +1,7 @@
 import path from 'path'
 import { promises as fs } from 'fs'
-
+// get single product if argument {productId} is provided, else get complete list of all products
 export const fetchProductData = async (productId) => {
-  // read and parse product data
   const productDirectory = path.join(process.cwd(), 'app', 'data')
   const productsJsonData = await fs.readFile(productDirectory + '/products.json', 'utf8')
   const parsedProductData = JSON.parse(productsJsonData)

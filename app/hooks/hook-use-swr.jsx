@@ -24,6 +24,7 @@ const fetcher = (...args) => {
     }))
 }
 
+// hook returns fetch data, and status of request: https://swr.vercel.app/
 export const useSwrFetcher = (params) => {
   const { data, error } = useSWR(params, fetcher)
   const { validProducts, validProductsUuid } = data || {}
